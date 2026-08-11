@@ -1,3 +1,59 @@
+// --- 1. NAVBAR TRANSPARENCY ON SCROLL ---
+const header = document.getElementById('main-header');
+
+window.addEventListener('scroll', () => {
+    // If scrolled past 50px, apply the frosted glass effect
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// --- 2. MOBILE HAMBURGER MENU LOGIC ---
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
+const navLinks = document.querySelectorAll('.nav-link');
+
+hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    hamburger.classList.toggle('toggle');
+});
+
+// Close menu when a link is clicked (Mobile)
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        hamburger.classList.remove('toggle');
+    });
+});
+
+// --- 3. SCROLL SPY LOGIC (HIGHLIGHT NAV ON SCROLL) ---
+const sections = document.querySelectorAll('section');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+
+    // Loop through each section to find which one is currently in view
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        // When we scroll past a third of the section, trigger the highlight
+        if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    // Remove active class from all links, then add to the current one
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) {
+            link.classList.add('active');
+        }
+    });
+});
+
 // --- 4. PROJECT & IMAGE MODAL LOGIC ---
 const projectModal = document.getElementById('project-modal');
 const closeProjectModal = document.querySelector('.close-modal');
@@ -18,7 +74,7 @@ const galleryContainer = document.getElementById('image-gallery-container');
 // Tracks which project is currently open
 let currentProjectId = null;
 
-// Project Data Dictionary (Now containing Image Arrays)
+// Project Data Dictionary (Containing Image Arrays)
 const projectData = {
     '1': {
         title: 'Uber Operations & KPI Monitoring',
@@ -35,9 +91,9 @@ const projectData = {
     '2': {
         title: 'Interactive Airbnb Market Analytics',
         desc: 'Analyzed 48,000+ Airbnb listings using SQL to identify market trends and pricing distributions. Designed interactive Tableau dashboards with geographical mapping and dynamic filter controls to communicate actionable market insights.',
-        githubLink: '#',
-        overviewImages: [],
-        dashboardImages: []
+        githubLink: 'https://github.com/paulose-shaji/Airbnb-NYC-Tableau-Analytics',
+        overviewImages: ['airbnb markdown.png'],
+        dashboardImages: ['airbnb dashboard.png']
     }
 };
 
@@ -83,13 +139,13 @@ function openImageGallery(imageArray) {
 
 // Handle Overview Button Click
 modalOverview.addEventListener('click', (e) => {
-    e.preventDefault(); // Prevents it from acting like a normal link
+    e.preventDefault(); 
     openImageGallery(projectData[currentProjectId].overviewImages);
 });
 
 // Handle Dashboard Button Click
 modalDashboard.addEventListener('click', (e) => {
-    e.preventDefault(); // Prevents it from acting like a normal link
+    e.preventDefault(); 
     openImageGallery(projectData[currentProjectId].dashboardImages);
 });
 
