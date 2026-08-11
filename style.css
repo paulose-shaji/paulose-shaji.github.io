@@ -220,7 +220,9 @@ nav a.active::after {
     box-shadow: 0 8px 15px rgba(37, 99, 235, 0.2);
 }
 
-/* --- ORGANIC BLOB HERO IMAGE --- */
+/* ========================================= */
+/* --- ORGANIC BLOB HERO IMAGE (3D POP) --- */
+/* ========================================= */
 .hero-image-wrapper {
     flex: 1;
     position: relative;
@@ -228,24 +230,64 @@ nav a.active::after {
     justify-content: center;
     align-items: center;
     min-height: 500px; 
+    z-index: 1; 
 }
 
+/* The yellow/green background blob peeking out */
+.hero-image-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    background-color: #d1d948;
+    border-radius: 35% 65% 45% 55% / 40% 30% 70% 60%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-55%, -45%) rotate(-10deg);
+    z-index: -1; 
+}
+
+/* Container to align both image layers perfectly */
+.profile-blob-container {
+    position: relative;
+    width: 400px;
+    height: 420px;
+}
+
+/* The main purple/blue blob (Clips the bottom) */
 .profile-blob {
-    width: 360px;
-    height: 450px; 
-    background-color: #dbeafe; 
-    border-radius: 45% 55% 40% 60% / 55% 45% 60% 40%; 
-    overflow: hidden; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.profile-img {
+    position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: cover; 
-    object-position: top;
+    background: linear-gradient(135deg, #7c3aed 0%, #38bdf8 100%);
+    border-radius: 65% 35% 25% 75% / 55% 40% 60% 45%; 
+    overflow: hidden; 
+}
+
+/* Layer 1: The Base Image */
+.profile-img {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 115%; 
+    object-fit: contain; 
+    object-position: bottom center;
+}
+
+/* Layer 2: The Pop-Out Image */
+.profile-img-pop {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 115%;
+    object-fit: contain; 
+    object-position: bottom center;
+    clip-path: inset(-20% 0 45% 0); 
+    z-index: 2;
 }
 
 /* --- FLOATING TAGS --- */
@@ -416,29 +458,202 @@ nav a.active::after {
 .btn-text:hover { text-decoration: underline; }
 
 /* ========================================= */
-/* --- CONTACT SECTION --- */
+/* --- CONTACT SECTION (GLASS STACK LAYOUT) --- */
 /* ========================================= */
 .footer-contact {
     background-color: var(--primary-blue);
     background-image: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
 }
-.contact-cards {
+
+.contact-wrapper {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 30px; 
     margin-top: 40px;
+    flex-wrap: wrap; 
+    align-items: stretch; /* UPDATED: This forces both boxes to equal height */
 }
-.c-card {
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 20px 40px;
-    border-radius: 10px;
+
+.contact-card-glass {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 40px;
+    border-radius: 16px;
+    width: 100%;
+    flex: 1; /* Helps the cards split the width evenly */
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    justify-content: space-between; /* UPDATED: Spreads contents out perfectly inside the box */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-align: left;
+    text-decoration: none; 
+    transition: 0.3s ease;
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: var(--accent-yellow); 
+    flex-shrink: 0;
+    transition: 0.3s;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-info span {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+}
+
+.contact-info p {
     color: var(--white);
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+    transition: color 0.3s;
 }
-.c-card:hover {
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+
+/* Hover Effects on Link Items */
+.contact-item:hover .contact-icon {
+    background: var(--white);
+    color: var(--primary-blue);
+    transform: scale(1.05);
 }
-.c-card i { font-size: 1.5rem; margin-bottom: 10px; color: var(--accent-yellow); }
+
+.contact-item:hover .contact-info p {
+    color: var(--accent-yellow); 
+}
+
+.contact-resume-btn {
+    margin-top: auto; /* Pushes the button to the absolute bottom */
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: var(--white);
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.contact-resume-btn i {
+    font-size: 0.85rem;
+}
+
+.contact-resume-btn:hover {
+    background-color: var(--white);
+    color: var(--primary-dark);
+}
+
+/* --- CONTACT FORM STYLES --- */
+.form-title {
+    color: var(--white);
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%; /* Ensures the form stretches */
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05); 
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 16px 20px;
+    border-radius: 12px;
+    color: var(--white);
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    transition: 0.3s;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--accent-yellow);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.required-asterisk {
+    position: absolute;
+    right: 18px;
+    top: 18px;
+    color: var(--accent-yellow);
+    font-weight: bold;
+    font-size: 1.2rem;
+    pointer-events: none; 
+}
+
+.contact-submit-btn {
+    margin-top: auto; /* Pushes the submit button to the absolute bottom */
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: var(--white);
+    padding: 12px 30px;
+    border-radius: 50px; 
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: fit-content; 
+}
+
+.contact-submit-btn:hover {
+    background: var(--white);
+    color: var(--primary-dark);
+}
 
 /* ========================================= */
 /* --- PROJECT MODAL POP-UP --- */
@@ -648,7 +863,10 @@ nav a.active::after {
     .summary { margin: 0 auto 30px; }
     
     .hero-actions { justify-content: center; }
-    .profile-blob { width: 300px; height: 380px; margin-top: 40px; }
+    
+    /* Resizes the main container and background blob for mobile */
+    .profile-blob-container { width: 300px; height: 315px; margin-top: 40px; }
+    .hero-image-wrapper::before { width: 315px; height: 315px; margin-top: 40px; }
     
     .top-left { top: 0; left: 0; }
     .top-right { top: 15%; right: 0; }
@@ -657,6 +875,5 @@ nav a.active::after {
     
     .stats-container { flex-direction: column; gap: 30px; }
     .projects-grid, .services-grid, .skills-grid-new, .cert-grid { grid-template-columns: 1fr; }
-    .contact-cards { flex-direction: column; }
     .exp-header { flex-direction: column; gap: 10px; }
 }
