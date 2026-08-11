@@ -173,29 +173,32 @@
                 <div class="exp-card box-pop">
                     <div class="exp-header">
                         <div>
-                            <h3>Data Science Intern</h3>
-                            <p class="company">Techolas Technologies Pvt Ltd. (Remote)</p>
+                            <h3>DATA SCIENCE INTERN – (Remote)</h3>
+                            <p class="company">Techolas Technologies Pvt Ltd, Calicut, Kerala</p>
                         </div>
-                        <span class="date">Oct 2025 - Present</span>
+                        <span class="date">October 2025 - Present</span>
                     </div>
                     <ul>
-                        <li>Utilized SQL, Python, and MS Excel to extract, clean, and validate structured datasets for EDA.</li>
-                        <li>Developed interactive Power BI and Tableau dashboards to track operational KPIs.</li>
-                        <li>Collaborated across remote team frameworks to document data workflows.</li>
+                        <li>Collected, cleaned, validated, and analyzed structured and unstructured data using Python, SQL, and Excel to identify trends, improve data quality, and support business decision-making.</li>
+                        <li>Developed interactive Power BI dashboards and automated reports for KPI tracking, performance monitoring, customer analytics, and operational reporting, enabling data-driven insights for stakeholders.</li>
+                        <li>Performed exploratory data analysis (EDA), data visualization, and statistical analysis to uncover actionable insights, measure key performance metrics, and recommend process improvements.</li>
+                        <li>Collaborated with cross-functional teams to gather business requirements, translate complex datasets into meaningful reports, document analytical findings, and support strategic business initiatives.</li>
                     </ul>
                 </div>
 
                 <div class="exp-card box-pop mt-30">
                     <div class="exp-header">
                         <div>
-                            <h3>Service Engineer - Operations</h3>
-                            <p class="company">GVR Technolabs Pvt Ltd, Kochi</p>
+                            <h3>SERVICE ENGINEER – Operations & Technical Support</h3>
+                            <p class="company">GVR Technolabs Pvt Ltd, Kochi, Kerala</p>
                         </div>
-                        <span class="date">May 2025 - Mar 2026</span>
+                        <span class="date">May 2025 – March 2026</span>
                     </div>
                     <ul>
-                        <li>Analyzed operational performance data and technical metrics using Google Workspace.</li>
-                        <li>Prepared detailed technical service reports and process documentation.</li>
+                        <li>Analyzed recurring operational issues and supported root-cause analysis to improve system performance and reliability.</li>
+                        <li>Prepared service reports, maintenance documentation, and performance records to support operational decision-making.</li>
+                        <li>Collaborated with cross-functional teams and stakeholders to coordinate system updates, issue resolution, and project execution.</li>
+                        <li>Monitored operational activities, tracked key performance indicators, and contributed to process improvement initiatives in mission-critical environments.</li>
                     </ul>
                 </div>
             </div>
@@ -259,7 +262,7 @@
         </div>
     </section>
 
- <!-- CERTIFICATIONS SECTION -->
+    <!-- CERTIFICATIONS SECTION -->
     <section id="certifications" class="bg-light section-padding">
         <div class="container">
             <h2 class="section-title">MY <span>CERTIFICATIONS</span></h2>
@@ -305,15 +308,13 @@
         </div>
     </section>
 
-<!-- CONTACT SECTION -->
+    <!-- CONTACT SECTION -->
     <section id="contact" class="section-padding footer-contact">
         <div class="container text-center">
             <h2 class="section-title text-white">LET'S <span>TALK</span></h2>
             <p class="text-white mb-30">I'm open to full-time Data Analyst/Data Scientist roles and freelance dashboard work.</p>
             
             <div class="contact-wrapper">
-                
-                <!-- Left Column: Contact Details (Kept exactly as before) -->
                 <div class="contact-card-glass box-pop">
                     <a href="mailto:vspaulose2002@gmail.com" class="contact-item">
                         <div class="contact-icon"><i class="fas fa-envelope"></i></div>
@@ -331,7 +332,7 @@
                         </div>
                     </a>
                     
-                    <a href="https://maps.app.goo.gl/bFr8M58KjFZpAzdi8" target="_blank" class="contact-item">
+                    <a href="https://maps.google.com/?q=Kerala,India" target="_blank" class="contact-item">
                         <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div class="contact-info">
                             <span>LOCATION</span>
@@ -360,14 +361,13 @@
                     </a>
                 </div>
 
-                <!-- Right Column: NEW Contact Form -->
+                <!-- Right Column: Contact Form -->
                 <div class="contact-card-glass box-pop">
                     <h3 class="form-title">Contact Form</h3>
                     
-                    <!-- Formsubmit integration pointing to your email -->
-                    <form action="https://formsubmit.co/vspaulose2002@gmail.com" method="POST" class="contact-form">
+                    <!-- Form with an ID for AJAX handling -->
+                    <form id="contact-form" class="contact-form">
                         
-                        <!-- Disables the captcha for a smoother user experience -->
                         <input type="hidden" name="_captcha" value="false">
 
                         <div class="input-group">
@@ -382,7 +382,6 @@
                         
                         <div class="input-group">
                             <input type="tel" name="phone" placeholder="Phone number">
-                            <!-- No asterisk because it's not required -->
                         </div>
                         
                         <div class="input-group">
@@ -394,6 +393,13 @@
                             Send Message <i class="fas fa-paper-plane"></i>
                         </button>
                     </form>
+
+                    <!-- Success Message Container (Hidden by default) -->
+                    <div id="form-success-message" style="display: none; text-align: center; color: #ffffff; margin: auto 0; padding: 20px 0;">
+                        <i class="fas fa-check-circle text-yellow" style="font-size: 3.5rem; margin-bottom: 20px;"></i>
+                        <h3 style="font-size: 1.8rem; margin-bottom: 12px;">Thank you for messaging!</h3>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 1rem;">Your message has been successfully sent. I will get back to you soon.</p>
+                    </div>
                 </div>
 
             </div>
@@ -426,7 +432,6 @@
         <div class="image-modal-content">
             <span class="close-image-modal"><i class="fas fa-times"></i></span>
             <div id="image-gallery-container">
-                <!-- Images will be injected here automatically by JavaScript -->
             </div>
         </div>
     </div>
