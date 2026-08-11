@@ -163,3 +163,44 @@ window.addEventListener('click', (e) => {
         imageModal.classList.remove('active');
     }
 });
+// --- 5. CONTACT FORM AJAX SUBMISSION ---
+const contactForm = document.getElementById('contact-form');
+const formSuccessMessage = document.getElementById('form-success-message');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(contactForm);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+        
+        const submitBtn = contactForm.querySelector('.contact-submit-btn');
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+        submitBtn.disabled = true;
+
+        fetch('https://formsubmit.co/ajax/vspaulose2002@gmail.com', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+        .then(response => response.json())
+        .then(data => {
+            contactForm.style.display = 'none';
+            formSuccessMessage.style.display = 'flex';
+            formSuccessMessage.style.flexDirection = 'column';
+            formSuccessMessage.style.justifyContent = 'center';
+            formSuccessMessage.style.alignItems = 'center';
+            formSuccessMessage.style.height = '100%';
+        })
+        .catch(error => {
+            alert('Something went wrong! Please try again later.');
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+        });
+    });
+}
