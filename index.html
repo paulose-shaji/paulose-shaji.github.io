@@ -65,10 +65,18 @@
                 </div>
             </div>
             
-            <!-- Organic Blob Profile -->
+            <!-- Organic Blob Profile with 3D Pop-Out Effect -->
             <div class="hero-image-wrapper">
-                <div class="profile-blob">
-                    <img src="hero.png" alt="Paulose Shaji Portrait" class="profile-img">
+                
+                <!-- Container for the 3D effect -->
+                <div class="profile-blob-container">
+                    <!-- Layer 1: The Background Blob (Clips the bottom) -->
+                    <div class="profile-blob">
+                        <img src="hero.png" alt="Paulose Shaji Portrait" class="profile-img">
+                    </div>
+                    
+                    <!-- Layer 2: The Pop-Out Head (Slices off the bottom, lets head overflow) -->
+                    <img src="hero.png" alt="Paulose Shaji Head Pop" class="profile-img-pop">
                 </div>
                 
                 <!-- Floating Tags -->
@@ -251,58 +259,143 @@
         </div>
     </section>
 
-    <!-- CERTIFICATIONS SECTION -->
+ <!-- CERTIFICATIONS SECTION -->
     <section id="certifications" class="bg-light section-padding">
         <div class="container">
             <h2 class="section-title">MY <span>CERTIFICATIONS</span></h2>
             <div class="cert-grid">
+                
+                <!-- Cert 1: Ongoing (Shows Popup) -->
                 <div class="cert-card-light box-pop">
                     <h4>Google Data Analytics Professional</h4>
-                    <a href="#" class="btn-text">View Credential &rarr;</a>
+                    <a href="#" onclick="alert('This course is currently ongoing! Check back soon for the credential.'); return false;" class="btn-text">View Credential &rarr;</a>
                 </div>
+                
+                <!-- Cert 2: Introduction to Data Science -->
                 <div class="cert-card-light box-pop">
                     <h4>Introduction to Data Science</h4>
-                    <a href="#" class="btn-text">View Credential &rarr;</a>
+                    <a href="https://www.linkedin.com/learning/certificates/af023bb17c5d677182f066821597df898483b743bcb30e55b92109f718547dd6" target="_blank" class="btn-text">View Credential &rarr;</a>
                 </div>
+                
+                <!-- Cert 3: Better Decisions Faster -->
                 <div class="cert-card-light box-pop">
-                    <h4>Data Viz to Make Better Decisions</h4>
-                    <a href="#" class="btn-text">View Credential &rarr;</a>
+                    <h4>How to Use Data Visualization to Make Better Decisions—Faster</h4>
+                    <a href="https://www.linkedin.com/learning/certificates/7147ef2625025bbc5dd2e84aaca9a143b30dd09bebe7f720dcde122f3a1a01fd" target="_blank" class="btn-text">View Credential &rarr;</a>
                 </div>
+                
+                <!-- Cert 4: Data Viz for Analysts -->
                 <div class="cert-card-light box-pop">
-                    <h4>Data Viz for Data Analysts</h4>
-                    <a href="#" class="btn-text">View Credential &rarr;</a>
+                    <h4>Data Visualization for Data Analysts and Analytics</h4>
+                    <a href="https://www.linkedin.com/learning/certificates/f3299b88cb9508b9aee0a24c0251480a6db8d2c627066371fdbec5a3048a5618" target="_blank" class="btn-text">View Credential &rarr;</a>
                 </div>
+                
+                <!-- Cert 5: SQL Programming -->
                 <div class="cert-card-light box-pop">
                     <h4>Learning SQL Programming</h4>
-                    <a href="#" class="btn-text">View Credential &rarr;</a>
+                    <a href="https://www.linkedin.com/learning/certificates/482235ae1cb3cd40c445a32e03c830d2179a7cee7abc85aacf61ce7f570adce7" target="_blank" class="btn-text">View Credential &rarr;</a>
                 </div>
+                
+                <!-- Cert 6: Excel Data Visualization -->
                 <div class="cert-card-light box-pop">
-                    <h4>Quality Management Foundations</h4>
-                    <a href="#" class="btn-text">View Credential &rarr;</a>
+                    <h4>Excel Data Visualization: Mastering 20+ Charts and Graphs</h4>
+                    <a href="https://www.linkedin.com/learning/certificates/b7ebb647ac70f3925ede1e88bbc76d6f7089d58eb061edc4721370c9449f366d" target="_blank" class="btn-text">View Credential &rarr;</a>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- CONTACT SECTION -->
+<!-- CONTACT SECTION -->
     <section id="contact" class="section-padding footer-contact">
         <div class="container text-center">
             <h2 class="section-title text-white">LET'S <span>TALK</span></h2>
             <p class="text-white mb-30">I'm open to full-time Data Analyst/Data Scientist roles and freelance dashboard work.</p>
             
-            <div class="contact-cards">
-                <div class="c-card box-pop">
-                    <i class="fas fa-envelope"></i>
-                    <p>vspaulose2002@gmail.com</p>
+            <div class="contact-wrapper">
+                
+                <!-- Left Column: Contact Details (Kept exactly as before) -->
+                <div class="contact-card-glass box-pop">
+                    <a href="mailto:vspaulose2002@gmail.com" class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-info">
+                            <span>EMAIL</span>
+                            <p>vspaulose2002@gmail.com</p>
+                        </div>
+                    </a>
+                    
+                    <a href="tel:+916282587491" class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div class="contact-info">
+                            <span>PHONE</span>
+                            <p>+91 62825 87491</p>
+                        </div>
+                    </a>
+                    
+                    <a href="https://maps.app.goo.gl/bFr8M58KjFZpAzdi8" target="_blank" class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-info">
+                            <span>LOCATION</span>
+                            <p>Kerala, India</p>
+                        </div>
+                    </a>
+                    
+                    <a href="https://linkedin.com/in/paulose-shaji" target="_blank" class="contact-item">
+                        <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
+                        <div class="contact-info">
+                            <span>LINKEDIN</span>
+                            <p>linkedin.com/in/paulose-shaji</p>
+                        </div>
+                    </a>
+                    
+                    <a href="https://github.com/paulose-shaji" target="_blank" class="contact-item">
+                        <div class="contact-icon"><i class="fab fa-github"></i></div>
+                        <div class="contact-info">
+                            <span>GITHUB</span>
+                            <p>github.com/paulose-shaji</p>
+                        </div>
+                    </a>
+
+                    <a href="PAULOSE SHAJI - Resume.pdf" target="_blank" class="contact-resume-btn">
+                        Resume <i class="fas fa-arrow-up-right-from-square"></i>
+                    </a>
                 </div>
-                <div class="c-card box-pop">
-                    <i class="fas fa-phone"></i>
-                    <p>+91 62825 87491</p>
+
+                <!-- Right Column: NEW Contact Form -->
+                <div class="contact-card-glass box-pop">
+                    <h3 class="form-title">Contact Form</h3>
+                    
+                    <!-- Formsubmit integration pointing to your email -->
+                    <form action="https://formsubmit.co/vspaulose2002@gmail.com" method="POST" class="contact-form">
+                        
+                        <!-- Disables the captcha for a smoother user experience -->
+                        <input type="hidden" name="_captcha" value="false">
+
+                        <div class="input-group">
+                            <input type="text" name="name" placeholder="Name" required>
+                            <span class="required-asterisk">*</span>
+                        </div>
+                        
+                        <div class="input-group">
+                            <input type="email" name="email" placeholder="Email" required>
+                            <span class="required-asterisk">*</span>
+                        </div>
+                        
+                        <div class="input-group">
+                            <input type="tel" name="phone" placeholder="Phone number">
+                            <!-- No asterisk because it's not required -->
+                        </div>
+                        
+                        <div class="input-group">
+                            <textarea name="message" rows="5" placeholder="Tell me a bit about what you're working on......" required></textarea>
+                            <span class="required-asterisk">*</span>
+                        </div>
+                        
+                        <button type="submit" class="contact-submit-btn">
+                            Send Message <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
                 </div>
-                <div class="c-card box-pop">
-                    <i class="fab fa-linkedin"></i>
-                    <p>linkedin.com/in/paulose-shaji</p>
-                </div>
+
             </div>
         </div>
     </section>
