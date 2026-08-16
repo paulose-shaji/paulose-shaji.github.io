@@ -64,7 +64,8 @@ const modalTitle = document.getElementById('modal-title');
 const modalDesc = document.getElementById('modal-desc');
 const modalGithub = document.getElementById('modal-github');
 const modalOverview = document.getElementById('modal-overview');
-const modalDashboard = document.getElementById('modal-dashboard');
+const modalThirdBtn = document.getElementById('modal-third-btn');
+const modalThirdText = document.getElementById('modal-third-text');
 
 // Image Gallery Modal Elements
 const imageModal = document.getElementById('image-modal');
@@ -74,11 +75,11 @@ const galleryContainer = document.getElementById('image-gallery-container');
 // Tracks which project is currently open
 let currentProjectId = null;
 
-// Project Data Dictionary (Containing Image Arrays)
+// Project Data Dictionary (Containing Image Arrays & Deployment Links)
 const projectData = {
     '1': {
         title: 'Uber Operations & KPI Monitoring',
-        desc: 'Cleaned and transformed over 100,000 trip records using MS Excel and Power Query. Engineered an interactive Power BI dashboard featuring dynamic slicers and trend analysis to evaluate revenue patterns and customer booking behavior.',
+        desc: 'Cleaned and transformed over 100,000 trip records using MS Excel and Power Query, ensuring data integrity and automating KPI tracking workflows.',
         githubLink: 'https://github.com/paulose-shaji/uber-trip-analysis-powerbi', 
         overviewImages: ['uber markdown.png'], 
         dashboardImages: [
@@ -90,10 +91,17 @@ const projectData = {
     },
     '2': {
         title: 'Interactive Airbnb Market Analytics',
-        desc: 'Analyzed 48,000+ Airbnb listings using SQL to identify market trends and pricing distributions. Designed interactive Tableau dashboards with geographical mapping and dynamic filter controls to communicate actionable market insights.',
+        desc: 'Analyzed 48,000+ Airbnb listings using SQL to identify market trends, pricing distributions, and occupancy patterns across regions.',
         githubLink: 'https://github.com/paulose-shaji/Airbnb-NYC-Tableau-Analytics',
         overviewImages: ['airbnb markdown.png'],
         dashboardImages: ['airbnb dashboard.png']
+    },
+    '3': {
+        title: 'Telecom Customer Churn Prediction',
+        desc: 'An end-to-end Machine Learning application for predicting telecom customer churn and identifying high-risk customers. The system analyzes customer demographic, service, contract, and billing information using a deployed Logistic Regression model.',
+        githubLink: 'https://github.com/paulose-shaji/Telecom-Customer-Churn-Prediction',
+        overviewImages: ['customer churn markdown.png'],
+        streamlitLink: 'https://telecom-customer-churn-prediction-paulose.streamlit.app/'
     }
 };
 
@@ -108,6 +116,17 @@ projectBtns.forEach(btn => {
         modalTitle.innerText = data.title;
         modalDesc.innerText = data.desc;
         modalGithub.href = data.githubLink;
+
+        // Configure third button dynamically based on project ID
+        if (currentProjectId === '3') {
+            modalThirdBtn.innerHTML = '<i class="fas fa-rocket"></i> Streamlit Deployment';
+            modalThirdBtn.href = data.streamlitLink;
+            modalThirdBtn.setAttribute('target', '_blank');
+        } else {
+            modalThirdBtn.innerHTML = '<i class="fas fa-chart-line"></i> Dashboard';
+            modalThirdBtn.href = '#';
+            modalThirdBtn.removeAttribute('target');
+        }
 
         projectModal.classList.add('active');
     });
@@ -143,10 +162,15 @@ modalOverview.addEventListener('click', (e) => {
     openImageGallery(projectData[currentProjectId].overviewImages);
 });
 
-// Handle Dashboard Button Click
-modalDashboard.addEventListener('click', (e) => {
-    e.preventDefault(); 
-    openImageGallery(projectData[currentProjectId].dashboardImages);
+// Handle Third Button Click (Dashboard gallery for 1 & 2, direct link for 3)
+modalThirdBtn.addEventListener('click', (e) => {
+    if (currentProjectId === '3') {
+        // Allows direct opening of Streamlit app in a new tab
+        projectModal.classList.remove('active');
+    } else {
+        e.preventDefault(); 
+        openImageGallery(projectData[currentProjectId].dashboardImages);
+    }
 });
 
 // Close Image Modal
@@ -163,6 +187,7 @@ window.addEventListener('click', (e) => {
         imageModal.classList.remove('active');
     }
 });
+
 // --- 5. CONTACT FORM AJAX SUBMISSION ---
 const contactForm = document.getElementById('contact-form');
 const formSuccessMessage = document.getElementById('form-success-message');
